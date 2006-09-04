@@ -1,0 +1,38 @@
+
+
+## necessary for configure
+
+# subdir in which "tar xf foo.tar" extracts the files
+# (if tar extracts the files in current dir, configure will create the subdir)
+tar_subdir="gms"
+
+# to get a file ($www_dir/$base_filename) from web, set following vars
+# 
+base_filename="gms.tar.gz"
+
+# location without filename (don't add a trailing slash)
+www_dir=""
+
+cvs_src="gmsbgi.c gmsdrv.h gms.h gms_make.mk gmsps.c gmssun.c gmsx11.c tgmsc.c gmsgl.c gmshpgl.c gms.mk gmsregis.c gmstek.c tgmsf.f gms-dist.mk gms.gmf gmsker.c gmsmsc.c gmsstub.c gms.tex simplex.gmf triplex.gmf"
+
+### install ##
+install_dir_inc=""
+install_dir_man=""
+install_dir_dat=""
+install_dir_bin="$pkg_inst_dir/$pak_subdir"
+install_dir_lib="$pkg_inst_dir/$pak_subdir"
+
+
+## export flags for package-use
+package_flags="-DGMS"
+package_libs="$install_dir_lib/libgms.a"
+
+
+
+# Configure
+wias_package_func_gms()
+{
+:
+}
+
+
