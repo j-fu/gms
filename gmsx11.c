@@ -598,6 +598,7 @@ int X11_ctrl(ws,action)wsdsc*ws;int action;
       info->default_font=XGetDefault(info->display,"gms","font");
 
       buffer=XGetDefault(info->display,"gms","backingstore");
+
       if (buffer!=NULL) /* let the user decide */
 	{
 	  if (!strcmp(buffer,"client"))
@@ -605,14 +606,18 @@ int X11_ctrl(ws,action)wsdsc*ws;int action;
 	  else
 	   info->server_does_no_backing_store=0;
 	}
-      else /* let the server decide */
+      else /* seems to be  default on modern X11 */
+        info->server_does_no_backing_store=1;
+
+        
+        /* let the server decide 
 	{
 	  if (DoesBackingStore(DefaultScreenOfDisplay(info->display)))
 	    info->server_does_no_backing_store=0;
 	  else
 	    info->server_does_no_backing_store=1;
 	}
-	
+*/	
 
       buffer=XGetDefault(info->display,"gms","wait4expose");
       if ((buffer!=NULL)&&(!strcmp(buffer,"no")))
